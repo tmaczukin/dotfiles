@@ -1,0 +1,34 @@
+[user]
+    name = Tomasz Maczukin
+    email = tomasz@maczukin.pl
+    signingkey = 26C0C9B5
+[color]
+    ui = auto
+    branch = auto
+    interactive = auto
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red
+    new = green
+[color "status"]
+    header = cyan
+    branch = white bold
+    added = green
+    changed = yellow
+    untracked = red
+[push]
+    default = simple
+[merge]
+    log = true
+[core]
+    editor = vim
+[alias]
+    pulllog = log ..@{u}
+    pushlog = log @{u}..
+    lastlog = log --pretty=format:'%Cblue%h%Creset c:%Cred%cn%Creset a:%Cred%an%Creset %Cgreen%s%Creset %ar' -n 10
+    who = shortlog -e -s -n
+    lg1 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold white)— %an%C(reset)%C(bold yellow)%d%C(reset)' --abbrev-commit --date=relative
+    lg2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
+    lg = !"git lg1" 
+
