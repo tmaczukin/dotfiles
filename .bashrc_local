@@ -1,29 +1,41 @@
+export EDITOR=vim
+
 export GIT_PS1_SHOWDIRTYSTATE="1"
 export GIT_PS1_SHOWSTASHSTATE="1"
 export GIT_PS1_SHOWUNTRACKEDFILES="1"
 export GIT_PS1_SHOWUPSTREAM="verbose"
 
-PS1='\n\[\033[32m\][\d \t] \[\033[0m\]| \[\033[34;1m\]\u\[\033[0m\]@\[\033[31m\]\h\[\033[0m\]:\[\033[33;1m\]\w $(__git_ps1 "\[\033[0m\]| \[\033[31m\]git: \[\033[32m\]%s ")\[\033[0m\]\$\n\[\033[34;1m\]\u\[\033[0m\]@\[\033[31m\]\h\[\033[0m\]:\$ '
+export LS_OPTIONS='--color=auto'
 
-if [ -x /usr/bin/dircolors ]; then
+
+if [[ -x /usr/bin/dircolors ]]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
 fi
 
+
+PS1='\n\[\033[32m\][\d \t] \[\033[0m\]| \[\033[34;1m\]\u\[\033[0m\]@\[\033[31m\]\h\[\033[0m\]:\[\033[33;1m\]\w $(__git_ps1 "\[\033[0m\]| \[\033[31m\]git: \[\033[32m\]%s ")\[\033[0m\]\$\n\[\033[34;1m\]\u\[\033[0m\]@\[\033[31m\]\h\[\033[0m\]:\$ '
+
+
+alias ls='ls $LS_OPTIONS'
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias dockercleanimages="docker images --no-trunc | grep none | awk '{print \$3}' | xargs -r docker rmi"
-alias dockercleancontainers="docker ps -a --no-trunc | grep -e 'Exit' -e 'Dead' | awk '{print \$1}' | xargs -L 1 -r
-docker rm"
-alias dockerclean="dockercleancontainers && dockercleanimages"
+alias grep='grep $LS_OPTIONS'
+alias fgrep='fgrep $LS_OPTIONS'
+alias egrep='egrep $LS_OPTIONS'
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
-export EDITOR=vim
+alias dockerclearimages="docker images --no-trunc | grep none | awk '{print \$3}' | xargs -r docker rmi"
+alias dockerclearcontainers="docker ps -a --no-trunc | grep -e 'Exit' -e 'Dead' | awk '{print \$1}' | xargs -r docker rm"
+alias dockerclearvolumes="docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes"
+alias dockerclear="dockerclearcontainers && dockerclearimages && dockerclearvolumes"
+
+alias home_display='xrandr --output LVDS --mode 1366x768 --output HDMI-0 --mode 1920x1080 --left-of LVDS'
+alias home_display_off='xrandr --output LVDS --mode 1366x768 --output HDMI-0 --off'
+
+
+if [[ -d ${HOME}/.rbenv/bin ]]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+fi

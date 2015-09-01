@@ -1,0 +1,12 @@
+if [[ -f ~/.bashrc_local ]]; then
+    source ~/.bashrc_local
+fi
+
+# Some more alias to avoid making mistakes:
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+if [[ -d "$HOME/bin" ]] ; then
+    export PATH="$HOME/bin:$PATH"
+fi

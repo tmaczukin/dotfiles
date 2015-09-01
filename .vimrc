@@ -39,6 +39,12 @@ autocmd FileType make setlocal softtabstop=8
 autocmd FileType ruby setlocal shiftwidth=2
 autocmd FileType ruby setlocal tabstop=2
 
+
+" lotcfile identification
+au BufNewFile,BufRead lotcfile set filetype=ruby
+au BufNewFile,BufRead lotcfile.example set filetype=ruby
+
+
 nnoremap j gj
 nnoremap k gk
 
@@ -51,6 +57,7 @@ nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 
 let NERDTreeMapOpenInTab='\r'
+let NERDTreeShowHidden=1
 
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
@@ -64,17 +71,12 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
-" git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
 Plugin 'scrooloose/nerdtree'
-" git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
 Plugin 'fatih/vim-go'
-" git clone https://github.com/vim-ruby/vim-ruby ~/.vim/bundle/vim-ruby
 Plugin 'vim-ruby/vim-ruby'
-" git clone https://github.com/tpope/vim-haml ~/.vim/bundle/vim-haml
 Plugin 'tpope/vim-haml'
-" git clone https://github.com/tpope/vim-bundler ~/.vim/bundle/vim-bundler
 Plugin 'tpope/vim-bundler'
-" git clone https://github.com/tpope/vim-rails ~/.vim/bundle/vim-rails
 Plugin 'tpope/vim-rails'
+Bundle 'Keithbsmiley/rspec.vim'
 
 call vundle#end()
