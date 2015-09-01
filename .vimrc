@@ -3,7 +3,6 @@ set nocompatible
 syntax on
 filetype on
 filetype indent on
-filetype plugin on
 
 set background=dark
 set showmatch
@@ -39,10 +38,12 @@ autocmd FileType make setlocal softtabstop=8
 autocmd FileType ruby setlocal shiftwidth=2
 autocmd FileType ruby setlocal tabstop=2
 
-
 " lotcfile identification
 au BufNewFile,BufRead lotcfile set filetype=ruby
 au BufNewFile,BufRead lotcfile.example set filetype=ruby
+
+" Spelling
+set spelllang=pl,en
 
 
 nnoremap j gj
@@ -71,12 +72,19 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'fatih/vim-go'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-rails'
-Bundle 'Keithbsmiley/rspec.vim'
+Plugin 'Keithbsmiley/rspec.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+Plugin 'statline'
 
 call vundle#end()
+filetype plugin indent on
