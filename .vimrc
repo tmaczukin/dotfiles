@@ -42,6 +42,9 @@ autocmd FileType ruby setlocal tabstop=2
 au BufNewFile,BufRead lotcfile set filetype=ruby
 au BufNewFile,BufRead lotcfile.example set filetype=ruby
 
+" coffee identification
+au BufNewFile,BufRead *.coffee set filetype=coffee
+
 " Spelling
 set spelllang=pl,en
 
@@ -53,6 +56,8 @@ nnoremap <C-Right> :tabnext<CR>
 nnoremap <C-Left> :tabprev<CR>
 nnoremap <C-t> :tabnew<CR>
 nnoremap <C-l> :NERDTreeToggle<CR>
+
+nnoremap <C-e> :e!<CR>
 
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
@@ -83,6 +88,8 @@ Plugin 'tpope/vim-rails'
 Plugin 'Keithbsmiley/rspec.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'editorconfig/editorconfig-vim'
 
 Plugin 'statline'
 
