@@ -90,8 +90,18 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'airblade/vim-gitgutter'
 
 Plugin 'statline'
 
 call vundle#end()
 filetype plugin indent on
+
+" show git status with tig (ncurses git client)
+function! s:tig_status()
+  cd `driller --scm-root %`
+  !tig status
+endfunction
+
+map <C-G> :TigStatus<CR><CR>
+command! TigStatus call s:tig_status()
