@@ -71,6 +71,7 @@ let g:rubycomplete_rails = 1
 let g:rubycomplete_load_gemfile = 1
 
 " Vundle: git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"         vim +PluginInstall +qall
 set rtp+=~/.vim/bundle/Vundle.vim
 
 " Plugins
