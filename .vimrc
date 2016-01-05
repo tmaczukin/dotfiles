@@ -58,6 +58,7 @@ nnoremap <C-t> :tabnew<CR>
 nnoremap <C-l> :NERDTreeToggle<CR>
 
 nnoremap <C-e> :e!<CR>
+nnoremap <C-h> :noh<CR>
 
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
@@ -106,3 +107,11 @@ endfunction
 
 map <C-G> :TigStatus<CR><CR>
 command! TigStatus call s:tig_status()
+
+" open bash
+function! s:open_bash()
+  !bash
+endfunction
+
+map <C-B> :OpenBash<CR><CR>
+command! OpenBash call s:open_bash()
