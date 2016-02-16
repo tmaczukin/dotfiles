@@ -59,6 +59,7 @@ nnoremap <C-l> :NERDTreeToggle<CR>
 
 nnoremap <C-e> :e!<CR>
 nnoremap <C-h> :noh<CR>
+nnoremap <C-d> :diffupdate<CR>
 
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
