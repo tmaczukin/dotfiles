@@ -1,7 +1,7 @@
 [user]
     name = Tomasz Maczukin
     email = tomasz@maczukin.pl
-    signingkey = 26C0C9B5
+    signingkey = 5C62DF63396CD2905201BBEBE1626E3E26C0C9B5
 [core]
     editor = vim
     pager = less -R
