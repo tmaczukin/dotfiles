@@ -2,6 +2,9 @@
     name = Tomasz Maczukin
     email = tomasz@maczukin.pl
     signingkey = 26C0C9B5
+[core]
+    editor = vim
+    pager = less -R
 [color]
     ui = auto
     branch = auto
@@ -17,13 +20,16 @@
     added = green
     changed = yellow
     untracked = red
-[push]
-    default = simple
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
+[commit]
+    gpgsign = true
 [merge]
     log = true
-[core]
-    editor = vim
-    pager = less -R
+[push]
+    default = simple
 [alias]
     pulllog = log ..@{u}
     pushlog = log @{u}..
@@ -38,9 +44,3 @@
     wtf = log --pretty=format:"%C(auto,yellow)%h%C(auto)%d%C(auto,reset)\\ by\\ %C(auto,blue)%cn%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)%n\\ %s%n" --stat
     cdiff = diff --cached
     sdiff = diff --staged
-[diff]
-    tool = vimdiff
-[difftool]
-    prompt = false
-[commit]
-	gpgsign = true
