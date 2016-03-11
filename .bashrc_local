@@ -8,6 +8,10 @@ export GIT_PS1_SHOWUPSTREAM="verbose"
 
 export LS_OPTIONS='--color=auto'
 
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/Projekty/go
+export PATH="$PATH:$GOPATH/bin:/usr/local/go/bin"
+
 
 if [[ -x /usr/bin/dircolors ]]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -50,3 +54,6 @@ if [[ -d ${HOME}/.rbenv/bin ]]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
 fi
+
+
+source ~/Projekty/gitlab/gdk/gdk
