@@ -36,6 +36,13 @@ alias home_display='xrandr --output LVDS --mode 1366x768 --output HDMI-0 --mode 
 alias home_display_off='xrandr --output LVDS --mode 1366x768 --output HDMI-0 --off'
 
 
+if [[ -f /etc/bash_completion ]]; then
+    source /etc/bash_completion
+elif [[ -f /etc/bash_completion.d/git-prompt ]]; then
+    source /etc/bash_completion.d/git-prompt
+fi
+
+
 if [[ -d ${HOME}/.rbenv/bin ]]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
