@@ -1,0 +1,93 @@
+#!/bin/bash
+
+df_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+is_root=false
+if [ "`id -u`" -eq 0 ]; then
+    is_root=true
+fi
+
+__link_file() {
+    if [ -e ${1} ]; then
+        return
+    fi
+    ln -s ${df_path}/${1} ${1}
+}
+
+__link_file_root() {
+    if ! ${is_root}; then
+        return
+    fi
+    __link_file ${1}
+}
+
+__load_into_bashrc() {
+    bashrc_file=${HOME}/.bashrc
+    loaded_file=${HOME}/${1}
+
+    grep "source ${loaded_file}" ${bashrc_file} >/dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        cat >> ${bashrc_file} << EOS
+
+if [[ -f ${loaded_file} ]]; then
+    source ${loaded_file}
+fi
+EOS
+    fi
+}
+
+
+#
+# Create symlinks for dotfiles
+#
+
+cd ${HOME}
+
+__link_file      .bashrc_local
+__link_file_root .bashrc_root
+__link_file      .gemrc
+__link_file      .gitconfig
+__link_file      .my.cnf
+__link_file      .vimrc
+
+gnupg_directory=${HOME}/.gnupg
+if [ ! -d ${gnupg_directory} ]; then
+    mkdir -p ${gnupg_directory}
+fi
+cd ${gnupg_directory}
+
+__link_file gpg.conf
+
+
+#
+# Load bashrc
+#
+
+bashrc_file=${HOME}/.bashrc
+
+if [ -f ${bashrc_file} ]; then
+    if ${is_root}; then
+        __load_into_bashrc .bashrc_root
+    else
+        __load_into_bashrc .bashrc_local
+    fi
+
+    echo "Run \`source ${bashrc_file}\` to load shell configuration"
+fi
+
+
+#
+# Install vim plugins
+#
+
+which vim >/dev/null 1>&1
+if [ $? -eq 0 ]; then
+    vundle_path=~/.vim/bundle/Vundle.vim
+    if [ ! -d ${vundle_path} ]; then
+        git clone https://github.com/gmarik/Vundle.vim.git ${vundle_path}
+    else
+        cd ${vundle_path}
+        git pull
+    fi
+
+    vim +PluginInstall +qall
+fi
