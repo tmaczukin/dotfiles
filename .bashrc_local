@@ -56,4 +56,6 @@ if [[ -d ${HOME}/.rbenv/bin ]]; then
 fi
 
 
-source ~/Projekty/gitlab/gdk/gdk
+if [[ -f ~/Projekty/gitlab/gdk/gdk ]]; then
+    source ~/Projekty/gitlab/gdk/gdk
+fi
