@@ -116,3 +116,7 @@ endfunction
 
 map <C-B> :OpenBash<CR><CR>
 command! OpenBash call s:open_bash()
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhitespace /\s\+$/
