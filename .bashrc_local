@@ -6,6 +6,11 @@ export GIT_PS1_SHOWSTASHSTATE="1"
 export GIT_PS1_SHOWUNTRACKEDFILES="1"
 export GIT_PS1_SHOWUPSTREAM="verbose"
 
+# Enable next three variables (set to `1` or to `true`) if you want to debug git sessions
+export GIT_TRACE=false
+export GIT_TRACE_PACKET=false
+export GIT_CURL_TRACE=false
+
 export LS_OPTIONS='--color=auto'
 
 export GOROOT=/usr/local/go
