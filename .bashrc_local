@@ -66,6 +66,14 @@ if [[ -f ~/Projekty/gitlab/gdk/gdk ]]; then
 fi
 
 
+if [[ -d /opt/jetbrains/idea/current/bin ]]; then
+    export PATH="/opt/jetbrains/idea/current/bin:${PATH}"
+fi
+if [[ -d /opt/jetbrains/rubymine/current/bin ]]; then
+    export PATH="/opt/jetbrains/rubymine/current/bin:${PATH}"
+fi
+
+
 if [[ -d ~/.bashrc_local.d ]]; then
     for file in ~/.bashrc_local.d/*; do
         source ${file}
