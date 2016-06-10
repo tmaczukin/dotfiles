@@ -13,11 +13,25 @@ __link_file() {
     ln -s ${df_path}/${1} ${1}
 }
 
+__link_dir() {
+    if [ -d ${1} ]; then
+        return
+    fi
+    ln -s ${df_path}/${1} ${1}
+}
+
 __link_file_root() {
     if ! ${is_root}; then
         return
     fi
     __link_file ${1}
+}
+
+__link_dir_root() {
+    if ! ${is_root}; then
+        return
+    fi
+    __link_dir ${1}
 }
 
 __load_into_bashrc() {
@@ -42,6 +56,7 @@ EOS
 
 cd ${HOME}
 
+__link_dir       .bashrc_local.d
 __link_file      .bashrc_local
 __link_file_root .bashrc_root
 __link_file      .gemrc

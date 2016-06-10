@@ -1,0 +1,26 @@
+pdf_booklet() {
+    if [ $# -ne 2 ]; then
+        echo "Usage: pdf_booklet input.pdf output.pdf"
+        return 1
+    fi
+
+    ready=true
+    echo "Checking required software:"
+    for i in pdftops psbook psnup ps2pdf; do
+        echo -ne "${i}   \t"
+        which ${i} >/dev/null 2>&1
+        if [ $? -ne 0 ]; then
+            echo "FAILED"
+            ready=false
+        else
+            echo "OK"
+        fi
+    done
+
+    if ! ${ready}; then
+        echo "Please install required software. Exiting."
+        return 2
+    fi
+
+    pdftops -level3 ${1} - | psbook | psnup -2 -pa4 | ps2pdf - ${2}
+}

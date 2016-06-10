@@ -11,13 +11,13 @@ export GIT_TRACE=false
 export GIT_TRACE_PACKET=false
 export GIT_CURL_TRACE=false
 
-export LS_OPTIONS='--color=auto'
-
+# GO settings
 export GOROOT=/usr/local/go
 export GOPATH=${HOME}/Projekty/go
 export PATH="${GOPATH}/bin:/usr/local/go/bin:${PATH}"
 
 
+export LS_OPTIONS='--color=auto'
 if [[ -x /usr/bin/dircolors ]]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
@@ -48,34 +48,6 @@ alias home_display='xrandr --output LVDS --mode 1366x768 --output HDMI-0 --mode 
 alias home_display_off='xrandr --output LVDS --mode 1366x768 --output HDMI-0 --off'
 
 
-pdf_booklet() {
-    if [ $# -ne 2 ]; then
-        echo "Usage: pdf_booklet input.pdf output.pdf"
-        return 1
-    fi
-
-    ready=true
-    echo "Checking required software:"
-    for i in pdftops psbook psnup ps2pdf; do
-        echo -ne "${i}   \t"
-        which ${i} >/dev/null 2>&1
-        if [ $? -ne 0 ]; then
-            echo "FAILED"
-            ready=false
-        else
-            echo "OK"
-        fi
-    done
-
-    if ! ${ready}; then
-        echo "Please install required software. Exiting."
-        return 2
-    fi
-
-    pdftops -level3 ${1} - | psbook | psnup -2 -pa4 | ps2pdf - ${2}
-}
-
-
 if [[ -f /etc/bash_completion ]]; then
     source /etc/bash_completion
 elif [[ -f /etc/bash_completion.d/git-prompt ]]; then
@@ -91,4 +63,11 @@ fi
 
 if [[ -f ~/Projekty/gitlab/gdk/gdk ]]; then
     source ~/Projekty/gitlab/gdk/gdk
+fi
+
+
+if [[ -d ~/.bashrc_local.d ]]; then
+    for file in ~/.bashrc_local.d/*; do
+        source ${file}
+    done
 fi
