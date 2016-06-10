@@ -1,0 +1,38 @@
+_gocd_comp() {
+    local cur prev
+
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    case "${prev}" in
+        *)
+            local -a tokens
+            local IFS=$'\n' x tmp quoted
+
+            compopt -o nospace
+
+            _quote_readline_by_ref "$cur" quoted
+            x=$(compgen -d -- "${GOPATH}/src/${quoted}") &&
+            while read -r tmp; do
+                tokens+=( "$(echo ${tmp} | sed "s|${GOPATH}/src/||")/" )
+            done <<< "${x}"
+
+            if [[ ${#tokens[@]} -ne 0 ]]; then
+                compopt -o filenames 2>/dev/null
+                COMPREPLY+=( "${tokens[@]}" )
+            fi
+
+            return 0
+            ;;
+    esac
+
+    COMPREPLY=($(compgen -- ${cur}))
+    return 0
+}
+
+gocd() {
+    cd ${GOPATH}/src/${1}
+}
+
+complete -F _gocd_comp gocd
