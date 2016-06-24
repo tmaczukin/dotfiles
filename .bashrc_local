@@ -1,6 +1,9 @@
+___dotfiles_dir=$(dirname $(realpath ${BASH_SOURCE}))
+
 export LIBVIRT_DEFAULT_URI=qemu:///system
 export EDITOR=vim
 
+# GIT settings
 export GIT_PS1_SHOWDIRTYSTATE="1"
 export GIT_PS1_SHOWSTASHSTATE="1"
 export GIT_PS1_SHOWUNTRACKEDFILES="1"

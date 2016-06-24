@@ -1,0 +1,3 @@
+cddotfiles() {
+    cd ${___dotfiles_dir}
+}
