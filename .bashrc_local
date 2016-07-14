@@ -51,6 +51,9 @@ alias dockerclear="dockerclearcontainers && dockerclearimages && dockerclearvolu
 alias home_display='xrandr --output LVDS --mode 1366x768 --output HDMI-0 --mode 1920x1080 --left-of LVDS'
 alias home_display_off='xrandr --output LVDS --mode 1366x768 --output HDMI-0 --off'
 
+alias brspec='bundle exec rspec --format documentation'
+alias brake='bundle exec rake'
+
 
 if [[ -f /etc/bash_completion ]]; then
     source /etc/bash_completion
