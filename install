@@ -61,6 +61,7 @@ __link_file      .bashrc_local
 __link_file_root .bashrc_root
 __link_file      .gemrc
 __link_file      .gitconfig
+__link_file      .git_globalignore
 __link_file      .my.cnf
 __link_file      .vimrc
 
