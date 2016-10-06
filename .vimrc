@@ -29,6 +29,9 @@ set softtabstop=4
 set expandtab
 set smarttab
 
+" status bar
+set laststatus=2
+
 " but no in makefiles
 autocmd FileType make setlocal noexpandtab
 autocmd FileType make setlocal shiftwidth=8
@@ -94,7 +97,7 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ctrlpvim/ctrlp.vim'
-
+Plugin 'vim-airline/vim-airline'
 Plugin 'statline'
 
 call vundle#end()
