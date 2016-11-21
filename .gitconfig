@@ -46,3 +46,5 @@
     wtf = log --pretty=format:"%C(auto,yellow)%h%C(auto)%d%C(auto,reset)\\ by\\ %C(auto,blue)%cn%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)%n\\ %s%n" --stat
     cdiff = diff --cached
     sdiff = diff --staged
+    updiff = diff @{u}..
+    mdiff = diff master..
