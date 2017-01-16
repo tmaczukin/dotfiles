@@ -1,0 +1,12 @@
+# Gets the test file as an argument (in a style `./path/to/file`), gets all `Test.*` function names from there
+# and executes only tests which were found in this file
+#
+gotest() {
+    test_file=${1}
+    shift 1
+
+    package=$(echo ${test_file} | sed -r "s|/[^/]+$||")
+    tests=$(grep -oE " Test[^(]+" ${test_file} | xargs | sed "s/ /|/g" )
+
+    go test ${package} -run "${tests}" ${@}
+}
