@@ -73,6 +73,7 @@ cd ${gnupg_directory}
 
 __link_file gpg.conf
 __link_file gpg-agent.conf
+__link_file scdaemon.conf
 
 
 #

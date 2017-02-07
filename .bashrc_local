@@ -10,6 +10,9 @@ export GIT_PS1_SHOWUNTRACKEDFILES="1"
 export GIT_PS1_SHOWUPSTREAM="verbose name"
 export GIT_PS1_DESCRIBE_STYLE="describe"
 
+# GPG settings
+export GPG_AGENT_INFO
+
 # Enable next three variables (set to `1` or to `true`) if you want to debug git sessions
 git_debug_enable() {
     export GIT_TRACE=1
