@@ -7,11 +7,11 @@ GIT_PS1_SHOWUNTRACKEDFILES="1"
 GIT_PS1_SHOWUPSTREAM="verbose name"
 GIT_PS1_DESCRIBE_STYLE="describe"
 
-color_clear="\033[0m"
-color_red="\033[31m"
-color_green="\033[32m"
-color_yellow="\033[33;1m"
-color_blue="\033[34;1m"
+color_clear="\[\033[0m\]"
+color_red="\[\033[31m\]"
+color_green="\[\033[32m\]"
+color_yellow="\[\033[33;1m\]"
+color_blue="\[\033[34;1m\]"
 
 __prompt_function() {
     prev_ret_val=$?
