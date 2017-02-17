@@ -47,3 +47,4 @@
     sdiff = diff --staged
     updiff = diff @{u}..
     mdiff = diff master..
+    fpush = push --force-with-lease
