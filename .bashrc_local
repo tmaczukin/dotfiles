@@ -84,3 +84,12 @@ if [[ -d ~/.bashrc_local.d ]]; then
         source ${file}
     done
 fi
+
+if (doctl completion >/dev/null 2>&1); then
+    source <(doctl completion bash)
+fi
+
+if (helm completion >/dev/null 2>&1); then
+    source <(helm completion bash)
+fi
+
