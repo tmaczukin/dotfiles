@@ -21,17 +21,17 @@ __prompt_function() {
         ___git_prompt=$(__git_ps1 "${color_clear} | ${color_red}git: ${color_green}%s")
     fi
 
-    ___prev_ret="${color_green}[\u2714]"
+    ___prev_ret="${color_green}[\xe2\x9c\x94]"
     if [[ $prev_ret_val -ne 0 ]]; then
-        ___prev_ret="${color_red}[\u2718 ${prev_ret_val}]"
+        ___prev_ret="${color_red}[\xe2\x9c\x98 ${prev_ret_val}]"
     fi
     ___prev_ret=$(echo -e "${___prev_ret}${color_clear}")
 
     PS1="\n${color_green}[\d \t]${color_clear} |"
     PS1="${PS1} ${color_blue}\u${color_clear}@${color_red}\H${color_clear}:${color_yellow}\w"
     PS1="${PS1}${___git_prompt}"
-    PS1="${PS1}${color_clear} | ${___prev_ret} ${color_clear}\$"
-    PS1="${PS1}\n${color_blue}\u${color_clear}@${color_red}\h${color_clear}:\$ "
+    PS1="${PS1}${color_clear} | ${___prev_ret} ${color_clear}\\\$"
+    PS1="${PS1}\n${color_blue}\u${color_clear}@${color_red}\h${color_clear}:\\\$ "
 }
 
 unset PROMPT_COMMAND
