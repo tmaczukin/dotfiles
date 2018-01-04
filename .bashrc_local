@@ -96,3 +96,11 @@ if (helm completion bash >/dev/null 2>&1); then
     source <(helm completion bash)
 fi
 
+if (minikube completion bash >/dev/null 2>&1); then
+    source <(minikube completion bash)
+fi
+
+if (kubectl completion bash >/dev/null 2>&1); then
+    source <(kubectl completion bash)
+fi
+
