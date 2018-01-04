@@ -70,6 +70,9 @@ if [[ -f ~/Projekty/gitlab/gdk/gdk ]]; then
     source ~/Projekty/gitlab/gdk/gdk
 fi
 
+if [[ -f ~/Projekty/gitlab/gitlab-compose-kit/.gck ]]; then
+    source ~/Projekty/gitlab/gitlab-compose-kit/.gck
+fi
 
 if [[ -d /opt/jetbrains/idea/current/bin ]]; then
     export PATH="/opt/jetbrains/idea/current/bin:${PATH}"
