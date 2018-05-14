@@ -47,4 +47,8 @@
     sdiff = diff --staged
     updiff = diff @{u}..
     mdiff = diff master..
+    cfdiff = diff --cached --name-only
+    upfdiff = diff @{u}.. --name-only
+    mfdiff = diff master.. --name-only
+    fshow = show --name-only
     fpush = push --force-with-lease
