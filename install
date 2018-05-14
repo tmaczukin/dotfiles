@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eo pipefail
+
 df_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 is_root=false
 if [ "`id -u`" -eq 0 ]; then
@@ -109,3 +111,34 @@ if [ $? -eq 0 ]; then
 
     vim +PluginInstall +qall
 fi
+
+_download_curl() {
+    echo "Downloading ${1} to ${2}..."
+    curl -s "${1}" > "${2}"
+}
+
+_download_wget() {
+    echo "Downloading ${1} to ${2}..."
+    wget "${1}" -O "${2}"
+}
+
+download_command=""
+case "${DF_DOWNLOAD_WITH}" in
+    wget)
+        download_command=_download_wget
+        ;;
+    curl)
+        download_command=_download_curl
+        ;;
+    *)
+        if command -v curl >/dev/null; then
+            download_command=_download_curl
+        elif command -v wget >/dev/null; then
+            download_command=_download_wget
+        fi
+        ;;
+esac
+
+if [[ -n "${download_command}" ]]; then
+fi
+
