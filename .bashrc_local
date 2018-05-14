@@ -63,10 +63,6 @@ if [[ -d ${HOME}/.rbenv/bin ]]; then
 fi
 
 
-if [[ -f ~/Projekty/gitlab/gdk/gdk ]]; then
-    source ~/Projekty/gitlab/gdk/gdk
-fi
-
 if [[ -f ~/Projekty/gitlab/gitlab-compose-kit/.gck ]]; then
     export USE_RAILS_SERVER="yes"
     source ~/Projekty/gitlab/gitlab-compose-kit/.gck
