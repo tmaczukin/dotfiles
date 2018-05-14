@@ -31,6 +31,19 @@ __prompt_function() {
     PS1="\n${color_green}[\d \t]${color_clear} |"
     PS1="${PS1} ${color_yellow}\w"
     PS1="${PS1}${___git_prompt}"
+
+    kubeps1_vendor="${___dotfiles_dir}/vendor/kube-ps1/kube-ps1.sh"
+
+    if [[ -f ${kubeps1_vendor} ]]; then
+        source "${kubeps1_vendor}"
+
+        KUBE_PS1_PREFIX=" | "
+        KUBE_PS1_SEPARATOR=""
+        KUBE_PS1_SUFFIX=""
+
+        PS1="${PS1}${color_clear}$(kube_ps1)"
+    fi
+
     PS1="${PS1}${color_clear} | ${___prev_ret} ${color_clear}\\\$"
     PS1="${PS1}\n${color_blue}\u${color_clear}@${color_red}\h${color_clear}:\\\$ "
 }

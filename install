@@ -140,5 +140,19 @@ case "${DF_DOWNLOAD_WITH}" in
 esac
 
 if [[ -n "${download_command}" ]]; then
+    kube_ps1_vendor="${df_path}/vendor/kube-ps1"
+    mkdir -p ${kube_ps1_vendor}
+
+    ${download_command} "https://raw.githubusercontent.com/tmaczukin/kube-ps1/master/kube-ps1.sh" ${kube_ps1_vendor}/kube-ps1.sh
+
+    kubectx_vendor="${df_path}/vendor/kubectx"
+    mkdir -p ${kubectx_vendor}
+
+    ${download_command} "https://raw.githubusercontent.com/tmaczukin/kubectx/master/kubectx" "${kubectx_vendor}/kubectx"
+    chmod +x "${kubectx_vendor}/kubectx"
+    ${download_command} "https://raw.githubusercontent.com/tmaczukin/kubectx/master/kubens" "${kubectx_vendor}/kubens"
+    chmod +x "${kubectx_vendor}/kubens"
+    ${download_command} "https://raw.githubusercontent.com/tmaczukin/kubectx/master/completion/kubectx.bash" "${kubectx_vendor}/kubectx.bash"
+    ${download_command} "https://raw.githubusercontent.com/tmaczukin/kubectx/master/completion/kubens.bash" "${kubectx_vendor}/kubens.bash"
 fi
 

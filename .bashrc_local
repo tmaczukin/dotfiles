@@ -98,3 +98,17 @@ if (kubectl completion bash >/dev/null 2>&1); then
     source <(kubectl completion bash)
 fi
 
+if [[ -d "${___dotfiles_dir}" ]]; then
+    kubectx_vendor="${___dotfiles_dir}/vendor/kubectx"
+
+    export PATH="${kubectx_vendor}:${PATH}"
+
+    if [[ -f "${kubectx_vendor}/kubectx.bash" ]]; then
+        source "${kubectx_vendor}/kubectx.bash"
+    fi
+
+    if [[ -f "${kubectx_vendor}/kubens.bash" ]]; then
+        source "${kubectx_vendor}/kubens.bash"
+    fi
+fi
+
