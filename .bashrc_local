@@ -46,9 +46,6 @@ alias dockerclearvolumes="docker volume ls -qf dangling=true | xargs -r docker v
 alias dockerclear="dockerclearcontainers && dockerclearimages && dockerclearvolumes"
 alias dockerps='docker ps --format "{{.ID}}  {{.Status | printf \"%-20s\" }} {{.Names | printf \"%-40s\" }} {{.Ports}}"'
 
-alias home_display='xrandr --output LVDS --mode 1366x768 --output HDMI-0 --mode 1920x1080 --left-of LVDS'
-alias home_display_off='xrandr --output LVDS --mode 1366x768 --output HDMI-0 --off'
-
 alias brspec='bundle exec rspec --format documentation'
 alias brake='bundle exec rake'
 
