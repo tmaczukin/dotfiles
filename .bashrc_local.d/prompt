@@ -28,7 +28,7 @@ __prompt_function() {
     ___prev_ret=$(echo -e "${___prev_ret}${color_clear}")
 
     PS1="\n${color_green}[\d \t]${color_clear} |"
-    PS1="${PS1} ${color_blue}\u${color_clear}@${color_red}\H${color_clear}:${color_yellow}\w"
+    PS1="${PS1} ${color_yellow}\w"
     PS1="${PS1}${___git_prompt}"
     PS1="${PS1}${color_clear} | ${___prev_ret} ${color_clear}\\\$"
     PS1="${PS1}\n${color_blue}\u${color_clear}@${color_red}\h${color_clear}:\\\$ "
